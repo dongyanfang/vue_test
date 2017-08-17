@@ -5,91 +5,51 @@
 <head>
   <title>vue测试</title>
   <style type="text/css">
-    .active{
-      color:red;
+    .list-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .list-enter-active, .list-leave-active {
+      transition: all 1s;
+    }
+    .list-enter, .list-leave-to
+    /* .list-leave-active for below version 2.1.8 */ {
+      opacity: 0;
+      transform: translateY(30px);
     }
   </style>
 </head>
 
 <body>
-<div id="app">
-  <currency-input label="Price" v-model="price"></currency-input>
-  <currency-input  label="Shipping"  v-model="shipping"></currency-input>
-  <currency-input label="Handling" v-model="handling"></currency-input>
-  <currency-input label="Discount" v-model="discount"></currency-input>
-  
-  <p>Total: ${{ total }}</p>
+<div id="list-demo" class="demo">
+  <button v-on:click="add">Add</button>
+  <button v-on:click="remove">Remove</button>
+  <transition-group name="list" tag="p">
+    <span v-for="item in items" v-bind:key="item" class="list-item">
+      {{ item }}
+    </span>
+  </transition-group>
 </div>
 
 </body>
 <script type="text/javascript" src="js/vue.js"></script> 
 <script>
-Vue.component('currency-input', {
-  template: '\
-    <div>\
-      <label v-if="label">{{ label }}</label>\
-      $\
-      <input\
-        ref="input"\
-        v-bind:value="value"\
-        v-on:input="updateValue($event.target.value)"\
-        v-on:focus="selectAll"\
-        v-on:blur="formatValue"\
-      >\
-    </div>\
-  ',
-  props: {
-    value: {
-      type: Number,
-      default: 0
-    },
-    label: {
-      type: String,
-      default: ''
-    }
-  },
-  mounted: function () {
-    this.formatValue()
+new Vue({
+  el: '#list-demo',
+  data: {
+    items: [1,2,3,4,5,6,7,8,9],
+    nextNum: 10
   },
   methods: {
-    updateValue: function (value) {
-      console.log(value)
-     // var result = currencyValidator.parse(value, this.value)
-      if (result.warning) {
-        this.$refs.input.value = result.value
-      }
-      this.$emit('input', result.value)
+    randomIndex: function () {
+      return Math.floor(Math.random() * this.items.length)
     },
-    formatValue: function () {
-      //this.$refs.input.value = currencyValidator.format(this.value)
+    add: function () {
+      this.items.splice(this.randomIndex(), 0, this.nextNum++)
     },
-    selectAll: function (event) {
-      // Workaround for Safari bug
-      // http://stackoverflow.com/questions/1269722/selecting-text-on-focus-using-jquery-not-working-in-safari-and-chrome
-      setTimeout(function () {
-        event.target.select()
-      }, 0)
-    }
-  }
-})
-
-new Vue({
-  el: '#app',
-  data: {
-    price: 0,
-    shipping: 0,
-    handling: 0,
-    discount: 0
-  },
-  computed: {
-    total: function () {
-      return ((
-        this.price * 100 + 
-        this.shipping * 100 + 
-        this.handling * 100 - 
-        this.discount * 100
-      ) / 100).toFixed(2)
-    }
+    remove: function () {
+      this.items.splice(this.randomIndex(), 1)
+    },
   }
 })
 </script>

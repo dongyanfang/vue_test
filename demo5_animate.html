@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>vue测试-多个组件动画</title>
+</head>
+<style type="text/css">
+  .component-fade-enter-active, .component-fade-leave-active {
+    transition: opacity .3s ease;
+  }
+  .component-fade-enter, .component-fade-leave-to
+  /* .component-fade-leave-active for below version 2.1.8 */ {
+    opacity: 0;
+  }
+</style>
+<body>
+<div id="transition-components-demo">
+  <input type="radio" name="com" v-on:click="checked1()">A
+  <input type="radio" name="com" v-on:click="checked2()">B
+  <transition name="component-fade" mode="out-in">
+    <component v-bind:is="view"></component>
+  </transition>
+</div>
+
+</body>
+<script type="text/javascript" src="js/vue.js"></script> 
+<script>
+new Vue({
+  el: '#transition-components-demo',
+  data: {
+    view: 'v-a'
+  },
+  components: {
+    'v-a': {
+      template: '<div>Component A</div>'
+    },
+    'v-b': {
+      template: '<div>Component B</div>'
+    }
+  },
+  methods: {
+    checked1: function () {
+      this.view='v-a';
+    },
+    checked2: function () {
+      this.view='v-b';
+    }
+  }
+})
+</script>
+</html>
