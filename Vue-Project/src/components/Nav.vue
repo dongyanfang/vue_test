@@ -9,7 +9,7 @@
         </div>
         <div>
           <ul class="nav navbar-nav navbar_nav">
-            <li><a><i class="per_ico"></i>个人中心</a></li>
+            <li><router-link to="/"><i class="per_ico"></i>个人中心</router-link></li>
             <li><a><i class="shop_ico"></i>商品首页</a></li>
             <li class="dropdown">
               <a>
@@ -54,14 +54,14 @@
   }
   .navbar_brand{
     color:#fff;
-    padding-top:2rem;
     float: left;
+    padding-top:2rem;
   }
   .navbar_brand:hover{
     color:#fff;
   }
   .navbar-header{
-    width:200px;
+    width:220px;
     float: left;
   }
   .navbar_logo{
