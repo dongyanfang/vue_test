@@ -43,7 +43,7 @@
           <td>300<br>(含运费0.0)<br>哆拾惠支付</td>
           <td class="green">已完成</td>
           <td>
-            <a>查看详情</a>
+            <router-link to="/myOrderDetail">查看详情</router-link>
             <a class="red">删除订单</a>
             <a>评价商品</a>
             <a>查看激励</a>
@@ -162,7 +162,7 @@ export default {
   }
   .order_time input{
     width:121px;
-    height:23px;
+    height:35px;
     border:1px solid #ccc;
   }
   .table{

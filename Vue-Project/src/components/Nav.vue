@@ -38,7 +38,15 @@
 </template>
 
 <script>
-
+  import Vue from 'vue'
+  Vue.http.get('static/index.json').then(
+    function (res) {
+      // 处理成功的结果
+      console.log(res.bodyText);
+    },function (res) {
+      // 处理失败的结果
+    }
+  );
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -54,15 +62,10 @@
   }
   .navbar_brand{
     color:#fff;
-    float: left;
     padding-top:2rem;
   }
   .navbar_brand:hover{
     color:#fff;
-  }
-  .navbar-header{
-    width:220px;
-    float: left;
   }
   .navbar_logo{
     float:left;
@@ -120,6 +123,9 @@
     background: none;
     color:#FFF;
   }
+  .navbar-default .navbar-nav>li>a{
+    color:#fff;
+  }
   .actived{
     color:#fff !important;
   }
@@ -135,12 +141,6 @@
   }
   .form_control{
     border-radius: 0px !important;
-    width:148px;
-    height:24px;
-  }
-  .navbar .nav>li>a{
-    color:#fff;
-    text-shadow:none;
   }
   .form_control:focus{
     border:1px solid transparent;
@@ -149,18 +149,11 @@
 
   .input_group{
     float:left;
-    position: relative;
     width:165px;
-  }
-  .input-group-btn{
-    position: absolute;
-    top:-5px;
-    right:0px;
   }
   .search_main{
     float: right;
     margin-top:1.1rem;
-    width:345px;
   }
   .ig_shopping{
     margin:0px 20px 0 20px;
@@ -169,7 +162,6 @@
   }
   .fc_shopping{
     text-indent:28px;
-    width:125px;
     background:#fff url("../assets/img/ico_img.png") no-repeat 0px -112px;
   }
 
@@ -201,6 +193,5 @@
     display: inline-block;
     width:30%;
   }
-
 
 </style>

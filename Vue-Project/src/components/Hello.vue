@@ -1,5 +1,5 @@
 <template>
-  <div class="main_left">
+  <div class="main_left  col-sm-7 col-md-8 col-lg-9 col-xs-12">
     <div class="personal_page_main">
       <div class="personal_page_header ">
         <div class="page_header col-sm-6 col-md-4 col-lg-3 col-xs-12">
@@ -81,14 +81,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .main_left{
-    width:77%;
-    float: left;
-  }
   .personal_page_main{
   }
   .personal_page_header{
-    min-height: 240px;
+    min-height: 205px;
   }
   .page_header{
     padding: 1rem 0;
@@ -96,8 +92,6 @@ export default {
     min-height: 205px;
     background:url("../assets/img/personal_bg1.png");
     background-size: 100% 100%;
-    float: left;
-    width:28%;
   }
   .page_header dl{
     margin-top: 38px;
@@ -143,11 +137,9 @@ export default {
   .page_state{
     padding-top:0.5rem;
     border-right:1px dashed #f5f5f5;
-    min-height: 222px;
+    min-height: 205px;
     background:url("../assets/img/personal_bg2.png");
     background-size: 100% 100%;
-    float: left;
-    width:33%;
   }
   .page_state ul{
     height: 100px;
@@ -181,11 +173,9 @@ export default {
   }
   .yes_income{
     padding: 2rem 0 1.15rem 1rem;
-    min-height:190px;
+    min-height:205px;
     background:url("../assets/img/personal_bg3.png");
     background-size: 100% 100%;
-    float: left;
-    width:36%;
   }
   .yes_income h2 {
     font-size: 0.9rem;
@@ -338,5 +328,6 @@ export default {
       padding-top:1rem;
     }
   }
+
 
 </style>
